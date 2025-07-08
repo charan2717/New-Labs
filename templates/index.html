@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Labs - AI Innovation Platform</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: #ffffff;
+        }
+        
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid #e5e5e5;
+            z-index: 1000;
+        }
+        
+        .nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 64px;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #000;
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: #666;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        
+        .nav-links a:hover {
+            color: #000;
+        }
+        
+        .auth-buttons {
+            display: flex;
+            gap: 12px;
+        }
+        
+        .btn {
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.2s;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        
+        .btn-secondary {
+            color: #666;
+            background: transparent;
+        }
+        
+        .btn-secondary:hover {
+            color: #000;
+            background: #f5f5f5;
+        }
+        
+        .btn-primary {
+            color: white;
+            background: #000;
+        }
+        
+        .btn-primary:hover {
+            background: #333;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 120px 24px 80px;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 12px;
+            background: #f5f5f5;
+            border-radius: 20px;
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 24px;
+        }
+        
+        .hero-title {
+            font-size: clamp(48px, 8vw, 72px);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            background: linear-gradient(135deg, #000 0%, #666 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero-subtitle {
+            font-size: 20px;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto 40px;
+            line-height: 1.5;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 60px;
+        }
+        
+        .btn-large {
+            padding: 12px 24px;
+            font-size: 16px;
+            border-radius: 8px;
+        }
+        
+        .btn-gradient {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+        }
+        
+        .btn-gradient:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+        
+        /* Features Grid */
+        .features {
+            padding: 80px 24px;
+            background: #fafafa;
+        }
+        
+        .features-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .features-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .features-title {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+        
+        .features-subtitle {
+            font-size: 18px;
+            color: #666;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+        }
+        
+        .feature-card {
+            background: white;
+            padding: 32px;
+            border-radius: 12px;
+            border: 1px solid #e5e5e5;
+            transition: all 0.2s;
+        }
+        
+        .feature-card:hover {
+            border-color: #ccc;
+            transform: translateY(-2px);
+        }
+        
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .feature-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        
+        .feature-description {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        /* Stats Section */
+        .stats {
+            padding: 80px 24px;
+            background: white;
+        }
+        
+        .stats-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 48px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
+        }
+        
+        .stat-label {
+            color: #666;
+            font-weight: 500;
+        }
+        
+        /* CTA Section */
+        .cta {
+            padding: 80px 24px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+        }
+        
+        .cta-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .cta-title {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+        
+        .cta-subtitle {
+            font-size: 18px;
+            opacity: 0.9;
+            margin-bottom: 32px;
+        }
+        
+        .btn-white {
+            background: white;
+            color: #667eea;
+            border: none;
+        }
+        
+        .btn-white:hover {
+            background: #f5f5f5;
+            transform: translateY(-1px);
+        }
+        
+        /* Footer */
+        .footer {
+            padding: 40px 24px;
+            background: #1a1a1a;
+            color: white;
+            text-align: center;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .footer-text {
+            color: #999;
+            font-size: 14px;
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero {
+                padding: 100px 24px 60px;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn-large {
+                width: 100%;
+                max-width: 280px;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .stats-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <a href="/" class="logo">New Labs</a>
+            <ul class="nav-links">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#docs">Docs</a></li>
+                <li><a href="#about">About</a></li>
+            </ul>
+            <div class="auth-buttons">
+                <a href="/login" class="btn btn-secondary">Sign in</a>
+                <a href="/register" class="btn btn-primary">Get started</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-badge">
+            <span>🚀</span>
+            <span>Now with GPT-4 integration</span>
+        </div>
+        <h1 class="hero-title">Build the future with AI</h1>
+        <p class="hero-subtitle">
+            The most advanced AI platform for developers. Create, deploy, and scale 
+            intelligent applications with our cutting-edge GPT models and tools.
+        </p>
+        <div class="hero-buttons">
+            <a href="/register" class="btn btn-large btn-gradient">Start building</a>
+            <a href="https://ai-0jiu.onrender.com/" target="_blank" class="btn btn-large btn-secondary">Vist Base(slow version)</a>
+
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="features-container">
+            <div class="features-header">
+                <h2 class="features-title">Everything you need to build with AI</h2>
+                <p class="features-subtitle">
+                    Powerful tools and APIs designed for modern AI development
+                </p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🤖</div>
+                    <h3 class="feature-title">Advanced GPT Models</h3>
+                    <p class="feature-description">
+                        Access to the latest GPT models with fine-tuning capabilities 
+                        and custom training options for your specific use cases.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3 class="feature-title">Lightning Fast API</h3>
+                    <p class="feature-description">
+                        Sub-second response times with global edge deployment. 
+                        Scale from prototype to production seamlessly.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔧</div>
+                    <h3 class="feature-title">Developer Tools</h3>
+                    <p class="feature-description">
+                        Comprehensive SDKs, debugging tools, and monitoring 
+                        dashboards to streamline your AI development workflow.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🛡️</div>
+                    <h3 class="feature-title">Enterprise Security</h3>
+                    <p class="feature-description">
+                        SOC 2 compliant infrastructure with end-to-end encryption 
+                        and advanced access controls for enterprise deployments.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3 class="feature-title">Analytics & Insights</h3>
+                    <p class="feature-description">
+                        Real-time analytics, usage metrics, and performance insights 
+                        to optimize your AI applications and reduce costs.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌐</div>
+                    <h3 class="feature-title">Global Infrastructure</h3>
+                    <p class="feature-description">
+                        Deploy across multiple regions with automatic failover 
+                        and load balancing for maximum reliability and performance.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="stats-container">
+            <div class="stat">
+                <div class="stat-number">50K+</div>
+                <div class="stat-label">Developers</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">1M+</div>
+                <div class="stat-label">API Calls Daily</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">99.99%</div>
+                <div class="stat-label">Uptime SLA</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">150ms</div>
+                <div class="stat-label">Avg Response Time</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="cta-container">
+            <h2 class="cta-title">Ready to build something amazing?</h2>
+            <p class="cta-subtitle">
+                Join thousands of developers already building the future with New Labs AI platform
+            </p>
+            <a href="/register" class="btn btn-large btn-white">Get started for free</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <p class="footer-text">
+                © 2024 New Labs. Built for developers, by developers.
+            </p>
+        </div>
+    </footer>
+</body>
+</html>
